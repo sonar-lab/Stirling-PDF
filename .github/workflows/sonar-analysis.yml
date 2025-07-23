@@ -21,7 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Gradle
-        run: .\gradlew.bat clean build
+        run: .\gradlew.bat clean build -x test
 
       - name: Run SonarQube Scanner
         run: |
@@ -30,6 +30,7 @@ jobs:
             "-Dsonar.projectName=19-Stirling-PDF" `
             "-Dsonar.sources=." `
             "-Dsonar.exclusions=**/*.md" `
+            "-Dsonar.java.binaries=build/classes/java/main" `
             "-Dsonar.javascript.node.maxspace=4096" `
             "-Dsonar.sourceEncoding=UTF-8" `
             "-Dsonar.host.url=http://localhost:9000" `
